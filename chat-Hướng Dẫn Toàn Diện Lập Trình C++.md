@@ -536,20 +536,20 @@ KẾT_THÚC_HÀM
 ### 🔹 Mermaid.js Code (cho hàm `demVaInViTriChiaHetCho3`):
 
 ```mermaid
-flowchart TD
-    Start([Bắt đầu hàm]) --> Init[dem = 0<br/>j = 0]
-    Init --> Loop{i < n?}
-    Loop -->|Đúng| Check{a[i] % 3 == 0?}
-    Check -->|Đúng| Store[mangViTri[j] = i+1<br/>dem++<br/>j++]
-    Check -->|Sai| Skip[Không làm gì]
-    Store --> Next[i++]
-    Skip --> Next
-    Next --> Loop
-    Loop -->|Sai| Print1[In: 'Số đếm: ' + dem]
-    Print1 --> CheckDem{dem > 0?}
-    CheckDem -->|Đúng| PrintPos[In các vị trí trong mangViTri]
-    CheckDem -->|Sai| PrintNone[In: 'Không có số nào']
-    PrintPos --> End([Kết thúc])
+    flowchart TD
+    Start(["Bắt đầu hàm"]) --> Init["dem = 0<br/>j = 0<br/>i = 0"]
+    Init --> CheckLoop{{"i &lt; n"}}
+    CheckLoop -->|Yes| CheckDiv{{"a[i] chia het cho 3"}}
+    CheckDiv -->|Yes| StorePos["mangViTri[j] = i + 1<br/>dem = dem + 1<br/>j = j + 1"]
+    CheckDiv -->|No| Skip["Khong lam gi"]
+    StorePos --> Increment["i = i + 1"]
+    Skip --> Increment
+    Increment --> CheckLoop
+    CheckLoop -->|No| PrintCount["In: So dem"]
+    PrintCount --> CheckDem{{"dem > 0"}}
+    CheckDem -->|Yes| PrintPos["In cac vi tri"]
+    CheckDem -->|No| PrintNone["In: Khong co so nao"]
+    PrintPos --> End(["Ket thuc"])
     PrintNone --> End
 ```
 
